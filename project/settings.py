@@ -119,3 +119,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# send email
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jeddou.mhammed@gmail.com'
+EMAIL_HOST_PASSWORD = 'jeddoudmnehtp'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# send_mail('Django mail', 'This e-mail was sent with Django.',
+#  'jeddou.mhammed@gmail.com', ['jeddou.mhammed@gmail.com'], fail_silently=False)
