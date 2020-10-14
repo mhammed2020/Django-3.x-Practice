@@ -14,5 +14,9 @@ Published {{ post.publish }} by {{ post.author }}
 {{ post.body|truncatewords:30|linebreaks }}
 {% endfor %}
 
-{% include "pagination.html" with page=posts %}
+<!-- {% include "pagination.html" with page=posts %} -->
+<!-- {% pagination with CBVs} -->
+
+{% include "pagination.html" with page=page_obj %}
+
 {% endblock %}
