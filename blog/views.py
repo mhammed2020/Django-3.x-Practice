@@ -55,7 +55,6 @@ class PostListView(ListView):
 
 # Handling forms in views
 
-from .forms import EmailPostForm
 """
 def post_share(request, post_id):
     # Retrieve post by id
@@ -76,8 +75,10 @@ def post_share(request, post_id):
 
  """
 # sen
-
+from .forms import EmailPostForm
 from django.core.mail import send_mail
+from django.conf import settings
+
 def post_share(request, post_id):
     # Retrieve post by id
     post = get_object_or_404(Post, id=post_id, status='published')
@@ -94,8 +95,10 @@ def post_share(request, post_id):
             f"{post.title}"
             message = f"Read {post.title} at {post_url}\n\n" \
             f"{cd['name']}\'s comments: {cd['comments']}"
+
+            
             send_mail(subject, message, 'jeddou.mhammed@gmail.com',
-            [cd['jeddou.mhammed@gmail.com']])
+            [cd['to']])
             sent = True
     else:
         form = EmailPostForm()
