@@ -6,8 +6,7 @@
 {% if sent %}
 <h1>E-mail successfully sent</h1>
 <p>
-"{{ post.title }}" was successfully sent to {{ form.cleaned_
-data.to }} .
+"{{ post.title }}" was successfully sent to {{ cd.to}} .
 </p>
 {% else %}
 <h1>Share "{{ post.title }}" by e-mail</h1>
