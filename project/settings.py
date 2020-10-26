@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'taggit',
+    # ...adding sitemap third party
+'django.contrib.sites',
+'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,5 @@ EMAIL_HOST_USER = 'jeddou.bro@gmail.com'
 EMAIL_HOST_PASSWORD = 'key'
 EMAIL_USE_TLS = True
 EMAIL_PORT = '587'
+
+SITE_ID = 1
