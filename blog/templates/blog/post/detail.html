@@ -12,6 +12,17 @@ Published {{ post.publish }} by {{ post.author }}
     Share this post
     </a>
     </p>
+<!-- similarty section -->
+
+<h2>Similar posts</h2>
+{% for post in similar_posts %}
+<p>
+<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+</p>
+{% empty %}
+There are no similar posts yet.
+{% endfor %}
+
 <!-- Adding comments to the post detail template -->
     {% with comments.count as total_comments %}
 <h2>

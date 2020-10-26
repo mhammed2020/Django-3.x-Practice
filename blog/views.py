@@ -12,6 +12,10 @@ from .forms import EmailPostForm, CommentForm
 from taggit.models import Tag
 # pagination 
 
+# retreive models by similarity
+
+from django.db.models import Count
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def post_list(request,tag_slug=None):
     # posts = Post.published.all()
@@ -66,12 +70,18 @@ publish__day=day)
         comment_form = CommentForm()
 
 
+# List of similar posts
+    post_tags_ids = post.tags.values_list('id', flat=True)
+    similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
+    similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags','-publish')[:4]
+
     return render(request,
     'blog/post/detail.html',
     {'post': post,
     'comments': comments,
     'new_comment': new_comment,
-    'comment_form': comment_form
+    'comment_form': comment_form,
+    'similar_posts': similar_posts
     
     
     })
