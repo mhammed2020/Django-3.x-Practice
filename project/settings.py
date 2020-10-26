@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # ...adding sitemap third party
 'django.contrib.sites',
 'django.contrib.sitemaps',
+'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -78,10 +79,19 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST'  : 'localhost'
     }
 }
 

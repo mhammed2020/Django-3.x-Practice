@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .feeds import LatestPostsFeed
 app_name = 'blog'
 
 
@@ -12,4 +13,5 @@ path('<int:year>/<int:month>/<int:day>/<slug:post>/',views.post_detail,name='pos
 
 path('<int:post_id>/share/',
 views.post_share, name='post_share'),
+path('feed/', LatestPostsFeed(), name='post_feed'),
 ]
